@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semitha Image | Cinematic Rwanda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#050505] text-white">
+
+    <a href="https://wa.me/250796028068" class="whatsapp-btn pulse" target="_blank">
+        <i data-lucide="message-circle"></i>
+    </a>
+
+    <nav class="fixed w-full z-50 flex justify-between items-center px-6 md:px-12 py-6 backdrop-blur-xl border-b border-white/5">
+        <div class="text-xl font-bold tracking-[0.3em] uppercase">Semitha <span class="text-gold">Image</span></div>
+        
+        <div class="flex gap-4 items-center">
+            <div class="flex gap-2 text-[10px] border border-white/20 p-1 rounded">
+                <button onclick="setLanguage('en')" class="lang-btn px-2 py-1 hover:text-gold transition active" id="btn-en">EN</button>
+                <button onclick="setLanguage('rw')" class="lang-btn px-2 py-1 hover:text-gold transition" id="btn-rw">RW</button>
+                <button onclick="setLanguage('fr')" class="lang-btn px-2 py-1 hover:text-gold transition" id="btn-fr">FR</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div id="parallax-bg" class="absolute inset-0 z-0">
+            <img src="b.jpg" class="w-full h-full object-cover opacity-40 scale-110" alt="Kigali Heights">
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-6xl md:text-8xl font-light tracking-tighter mb-4 italic" id="hero-title">Semitha Image</h1>
+            <p class="text-gold tracking-[0.5em] uppercase text-xs md:text-sm mb-12" id="hero-sub">Capturing Stories Through the Lens</p>
+            <a href="#portfolio" class="border border-white/20 px-8 py-4 text-[10px] tracking-[0.3em] hover:bg-white hover:text-black transition duration-500" id="hero-cta">EXPLORE ARCHIVE</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-32 px-6 md:px-24 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div class="space-y-8">
+                <h2 class="text-gold text-xs tracking-[0.4em] uppercase" id="about-label">The Photographer's Goal</h2>
+                <h3 class="text-4xl md:text-5xl font-serif italic" id="about-title">Turning fleeting moments into timeless legacies.</h3>
+                <p class="text-gray-400 text-lg leading-relaxed font-light" id="about-desc">
+                    Semitha Image was founded on a single principle: Emotional Authenticity.
+                </p>
+            </div>
+            <div class="relative group">
+                <img src="n.png" class="grayscale hover:grayscale-0 transition duration-1000 object-cover w-full h-[500px]" alt="Rwandan Landscapes">
+                <div class="absolute inset-0 border-2 border-gold -m-4 -z-10 translate-x-2 translate-y-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24">
+        <div class="px-6 md:px-12 mb-12">
+            <h2 class="text-3xl font-serif italic" id="portfolio-title">Portfolio Archive</h2>
+        </div>
+        <div id="main-gallery" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-1"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

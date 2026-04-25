@@ -72,7 +72,7 @@ function startHeroSlideshow() {
 }
 
 // 3. Portfolio Gallery (Single Entry)
-const rwandaImages = ["a.jpg", "d.JPG", "e.jpg", "f.jpg", "g.jpg", "h.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg"];
+const rwandaImages = ["a.jpg", "no.jpg", "e.jpg", "f.jpg", "g.jpg", "h.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg"];
 
 function loadGallery() {
     const container = document.getElementById('main-gallery');

@@ -57,6 +57,10 @@ const rwandaImages = [
     "g.jpg", // Kigali
     "h.jpg", // Nature
     "i.jpg", // Nature
+     "1.jpg", // Nature
+     "2.jpg", // Nature
+     "3.jpg", // Nature
+     "4.jpg", // Nature
 ];
 
 function loadGallery() {

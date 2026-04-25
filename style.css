@@ -1,46 +1,128 @@
-:root { --gold: #c5a059; }
-
-body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-.font-serif { font-family: 'Playfair Display', serif; }
-.text-gold { color: var(--gold); }
-
-/* WhatsApp Button */
-.whatsapp-btn {
-    position: fixed; bottom: 30px; right: 30px;
-    background: #25d366; width: 60px; height: 60px;
-    border-radius: 50%; display: flex; justify-content: center; align-items: center;
-    z-index: 100;
+/* 1. Global Styles */
+:root {
+    --gold: #c5a059;
+    --dark-bg: #050505;
+    --card-bg: #0a0a0a;
 }
-.pulse { animation: pulse-ring 2s infinite; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--dark-bg);
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+.text-gold {
+    color: var(--gold);
+}
+
+/* 2. Navigation & Buttons */
+.lang-btn {
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.lang-btn:hover {
+    opacity: 1;
+    color: var(--gold);
+}
+
+.lang-btn.active {
+    opacity: 1;
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    font-weight: 600;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+}
+
+.pulse {
+    animation: pulse-ring 2s infinite;
+}
+
 @keyframes pulse-ring {
     0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
     70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* Gallery Frame & Message Button */
-.gallery-item { aspect-ratio: 4/5; position: relative; overflow: hidden; background: #000; }
-.gallery-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
-    opacity: 0; transition: opacity 0.4s ease;
-    display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
-    padding-bottom: 30px;
+/* 3. Hero Slideshow Animation */
+#slide-img {
+    transition: opacity 1.5s ease-in-out, transform 6s linear;
+    will-change: opacity, transform;
 }
-.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+/* 4. Portfolio Gallery & Message Button */
+.gallery-item {
+    aspect-ratio: 4/5;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    /* Gradient ituma button isomeka neza kuri buri foto */
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Iyi ituma button iguma hasi */
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
 
 .msg-btn {
     background: var(--gold);
     color: black;
     font-size: 10px;
-    font-weight: bold;
+    font-weight: 800;
     padding: 12px 28px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
-.msg-btn:hover { background: white; transform: translateY(-3px); }
 
-.lang-btn.active { color: var(--gold); border-bottom: 1px solid var(--gold); font-weight: 600; }
+.msg-btn:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+/* 5. About Section Style */
+#about img {
+    box-shadow: -20px 20px 0px -5px rgba(197, 160, 89, 0.1);
+}

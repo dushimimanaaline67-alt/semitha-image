@@ -34,7 +34,8 @@ let currentLang = 'en';
 function setLanguage(lang) {
     currentLang = lang;
     document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(`btn-${lang}`).classList.add('active');
+    const activeBtn = document.getElementById(`btn-${lang}`);
+    if(activeBtn) activeBtn.classList.add('active');
 
     // Update Text
     document.getElementById('hero-sub').innerText = translations[lang].heroSub;
@@ -45,39 +46,44 @@ function setLanguage(lang) {
     document.getElementById('portfolio-title').innerText = translations[lang].portfolioTitle;
 }
 
-// 2. 300 Image Gallery Logic (Rwanda Places Only)
-// Note: We use professional photography IDs that reflect Rwanda's aesthetic
+// 2. Logic yo kwerekana ifoto inshuro imwe no kuyuzuza muri Frame
 const galleryContainer = document.getElementById('main-gallery');
 
+// Urutonde rw'amafoto (Yashyire mu folder imwe n'iyi file)
 const rwandaImages = [
-    "a.jpg", // Hills
-    "d.jpg", // Kigali
-    "e.jpg", // Nature
-     "f.jpg", // Hills
-    "g.jpg", // Kigali
-    "h.jpg", // Nature
-    "i.jpg", // Nature
-     "1.jpg", // Nature
-     "2.jpg", // Nature
-     "3.jpg", // Nature
-     "4.jpg", // Nature
+    "a.jpg", "d.jpg", "e.jpg", "f.jpg", "g.jpg", 
+    "h.jpg", "i.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg"
 ];
 
 function loadGallery() {
-    for (let i = 1; i <= 30; i++) {
-        const imgUrl = rwandaImages[i % rwandaImages.length] + `?auto=format&fit=crop&w=800&q=60`;
+    galleryContainer.innerHTML = ''; 
+
+    rwandaImages.forEach((imgName, index) => {
         const item = document.createElement('div');
-        item.className = "gallery-item relative group overflow-hidden bg-[#111]";
+        
+        // 'aspect-square' cyangwa 'aspect-[4/5]' bituma frame igira intera ihoraho
+        // 'overflow-hidden' ituma ifoto itarenga kadiri
+        item.className = "gallery-item relative group overflow-hidden bg-[#111] aspect-[4/5] rounded-sm";
         
         item.innerHTML = `
-            <img src="${imgUrl}" loading="lazy" class="w-full h-full object-cover opacity-80 transition duration-700">
-            <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-6">
-                <h4 class="text-white font-serif italic">Rwanda View #${i}</h4>
-                <button onclick="contactWA(${i})" class="text-[10px] text-gold uppercase tracking-widest mt-2 border-b border-gold/40">Inquire</button>
+            <img 
+                src="${imgName}" 
+                alt="Rwanda View ${index + 1}"
+                loading="lazy" 
+                class="w-full h-full object-cover opacity-90 transition duration-700 group-hover:scale-110 group-hover:opacity-100"
+            >
+            <div class="gallery-overlay absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <h4 class="text-white font-serif italic text-sm">Rwanda View #${index + 1}</h4>
+                <button 
+                    onclick="contactWA(${index + 1})" 
+                    class="text-[10px] text-orange-400 uppercase tracking-widest mt-2 border-b border-orange-400/40 w-fit hover:text-white hover:border-white transition-colors"
+                >
+                    Inquire
+                </button>
             </div>
         `;
         galleryContainer.appendChild(item);
-    }
+    });
 }
 
 function contactWA(id) {
@@ -85,9 +91,9 @@ function contactWA(id) {
     window.open(`https://wa.me/250796028068?text=${msg}`, '_blank');
 }
 
-// Init
+// Gukora Initialization
 document.addEventListener('DOMContentLoaded', () => {
     loadGallery();
-    lucide.createIcons();
+    if(typeof lucide !== 'undefined') lucide.createIcons();
     setLanguage('en');
 });
